@@ -4,13 +4,13 @@ group = 'cd.go'
 version = '0.0.1'
 
 project.ext.pluginDesc = [
-  id         : 'cd.go.authorization.skeleton',
+  id         : 'cd.go.guest.login',
   version    : project.version,
   goCdVersion: '17.3.0',
-  name       : 'Authorization Skeleton Plugin for GoCD',
-  description: 'Authorization Skeleton Plugin for GoCD',
+  name       : 'GoCD Guest Login Plugin',
+  description: 'GoCD Authorization Plugin For Guest Login',
   vendorName : 'GoCD Contributors',
-  vendorUrl  : 'https://github.com/gocd/authorization-sekeleton-plugin'
+  vendorUrl  : 'https://github.com/gocd-contrib/gocd-guest-login'
 ]
 
 sourceCompatibility = 1.8
