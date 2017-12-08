@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 
 public class GetPluginIconExecutor implements RequestExecutor {
     private static final Gson GSON = new Gson();
@@ -18,14 +19,13 @@ public class GetPluginIconExecutor implements RequestExecutor {
         jsonObject.addProperty("data", Base64.encodeBase64String(Util.readResourceBytes(getIcon())));
         DefaultGoPluginApiResponse defaultGoPluginApiResponse = new DefaultGoPluginApiResponse(200, GSON.toJson(jsonObject));
         return defaultGoPluginApiResponse;
-
     }
 
     private String getContentType() {
-        throw new RuntimeException("Implement me!");
+        return "image/png";
     }
 
     private String getIcon() {
-        throw new RuntimeException("Implement me!");
+        return "/guest.png";
     }
 }
