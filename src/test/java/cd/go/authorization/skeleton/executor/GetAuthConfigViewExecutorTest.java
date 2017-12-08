@@ -30,10 +30,9 @@ public class GetAuthConfigViewExecutorTest {
 
         for (ProfileMetadata field : MetadataHelper.getMetadata(Configuration.class)) {
             assertThat(template, containsString("ng-model=\"" + field.getKey() + "\""));
-            assertThat(template, containsString("<span class=\"form_error form-error\" ng-class=\"{'is-visible': GOINPUTNAME[" +
-                    field.getKey() + "].$error.server}\" ng-show=\"GOINPUTNAME[" +
-                    field.getKey() + "].$error.server\">{{GOINPUTNAME[" +
-                    field.getKey() + "].$error.server}}</span>"));
+            assertThat(template, containsString("<span class=\"form_error\" ng-show=\"GOINPUTNAME[" +
+                    field.getKey() + "].$error.server\">{{ GOINPUTNAME[" + field.getKey() + "].$error.server }}</span>"));
+
         }
     }
 }

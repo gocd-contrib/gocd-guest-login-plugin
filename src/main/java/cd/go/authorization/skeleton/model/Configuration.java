@@ -14,17 +14,17 @@ import static cd.go.authorization.skeleton.utils.Util.GSON;
 public class Configuration {
     @Expose
     @SerializedName(SETTINGS_USERNAME_KEY)
-    @ProfileField(key = "username", required = true, secure = false)
+    @ProfileField(key = SETTINGS_USERNAME_KEY, required = true, secure = false)
     private String username;
 
     @Expose
     @SerializedName(SETTINGS_USER_DISPLAY_NAME_KEY)
-    @ProfileField(key = "display_name", required = true, secure = false)
+    @ProfileField(key = SETTINGS_USER_DISPLAY_NAME_KEY, required = true, secure = false)
     private String displayName;
 
     @Expose
     @SerializedName(SETTINGS_USER_EMAIL_KEY)
-    @ProfileField(key = "email_address", required = true, secure = false)
+    @ProfileField(key = SETTINGS_USER_EMAIL_KEY, required = true, secure = false)
     private String emailAddress;
 
     public static Configuration fromJSON(String json) {
