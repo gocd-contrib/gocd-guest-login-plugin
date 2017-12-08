@@ -11,9 +11,9 @@ public class GetCapabilitiesExecutorTest {
         GoPluginApiResponse response = new GetCapabilitiesExecutor().execute();
 
         String expectedJSON = "{\n" +
-                "    \"supported_auth_type\":\"password\",\n" +
-                "    \"can_search\":true,\n" +
-                "    \"can_authorize\":true\n" +
+                "    \"supported_auth_type\":\"web\",\n" +
+                "    \"can_search\":false,\n" +
+                "    \"can_authorize\":false\n" +
                 "}";
 
         JSONAssert.assertEquals(expectedJSON, response.responseBody(), true);

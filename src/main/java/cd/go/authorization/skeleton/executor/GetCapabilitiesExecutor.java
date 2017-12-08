@@ -1,6 +1,7 @@
 package cd.go.authorization.skeleton.executor;
 
 import cd.go.authorization.skeleton.model.Capabilities;
+import cd.go.authorization.skeleton.model.SupportedAuthType;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
@@ -14,6 +15,6 @@ public class GetCapabilitiesExecutor {
     }
 
     Capabilities getCapabilities() {
-        throw new RuntimeException("Implement me!");
+        return new Capabilities(SupportedAuthType.Web, false, false);
     }
 }
