@@ -29,8 +29,10 @@ public class GoCDGuestLoginPlugin implements GoPlugin {
             switch (RequestFromServer.fromString(request.requestName())) {
                 case REQUEST_GET_PLUGIN_ICON:
                     return new GetPluginIconExecutor().execute();
+
                 case REQUEST_GET_CAPABILITIES:
                     return new GetCapabilitiesExecutor().execute();
+
                 case REQUEST_GET_AUTH_CONFIG_METADATA:
                     return new GetAuthConfigMetadataExecutor().execute();
                 case REQUEST_AUTH_CONFIG_VIEW:
