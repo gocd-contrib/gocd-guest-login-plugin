@@ -1,9 +1,9 @@
 package cd.go.authorization.guest.model;
 
 import cd.go.authorization.guest.exception.InvalidUsernameException;
+import cd.go.authorization.guest.utils.Util;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang3.StringUtils;
 
 public class User {
     @Expose
@@ -23,7 +23,7 @@ public class User {
         this.displayName = displayName;
         this.emailId = emailId == null ? null : emailId.toLowerCase().trim();
 
-        if (StringUtils.isBlank(this.username)) {
+        if (Util.isBlank(this.username)) {
             throw new InvalidUsernameException("Username can not be blank.");
         }
     }
