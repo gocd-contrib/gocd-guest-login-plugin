@@ -38,6 +38,14 @@ public class AuthConfig {
         return GSON.fromJson(json, AuthConfig.class);
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

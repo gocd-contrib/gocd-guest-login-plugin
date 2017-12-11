@@ -4,13 +4,12 @@ import cd.go.authorization.guest.Authenticator;
 import cd.go.authorization.guest.Authorizer;
 import cd.go.authorization.guest.model.AuthConfig;
 import cd.go.authorization.guest.model.AuthenticationResponse;
-import cd.go.authorization.guest.model.Credentials;
-import cd.go.authorization.guest.model.RoleConfig;
 import com.google.gson.Gson;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,16 +30,14 @@ public class UserAuthenticationExecutor implements RequestExecutor {
 
     @Override
     public GoPluginApiResponse execute() throws Exception {
-        Credentials credentials = Credentials.fromJSON(request.requestBody());
         final List<AuthConfig> authConfigs = AuthConfig.fromJSONList(request.requestBody());
-        final List<RoleConfig> roleConfigs = RoleConfig.fromJSONList(request.requestBody());
 
-        AuthenticationResponse authenticationResponse = authenticator.authenticate(credentials, authConfigs);
+        AuthenticationResponse authenticationResponse = authenticator.authenticate(null, authConfigs);
 
         Map<String, Object> userMap = new HashMap<>();
         if (authenticationResponse != null) {
             userMap.put("user", authenticationResponse.getUser());
-            userMap.put("roles", authorizer.authorize(authenticationResponse.getUser(), authenticationResponse.getConfigUsedForAuthentication(), roleConfigs));
+            userMap.put("roles", authorizer.authorize(authenticationResponse.getUser(), authenticationResponse.getConfigUsedForAuthentication(), new ArrayList<>()));
         }
 
         DefaultGoPluginApiResponse response = new DefaultGoPluginApiResponse(SUCCESS_RESPONSE_CODE, GSON.toJson(userMap));

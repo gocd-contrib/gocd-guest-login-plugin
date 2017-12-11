@@ -36,6 +36,16 @@ public class Configuration {
         return GSON.fromJson(json, Configuration.class);
     }
 
+    public Configuration() {
+    }
+
+    public Configuration(String serverUrl, String username, String displayName, String emailAddress) {
+        this.serverUrl = serverUrl;
+        this.username = username;
+        this.displayName = displayName;
+        this.emailAddress = emailAddress;
+    }
+
     public String getUsername() {
         return username;
     }
