@@ -1,23 +1,37 @@
-# GoCD Authorization Plugin Skeleton
+# Guest User Login Plugin for GoCD
+GoCD Guest User Login Plugin allows the user to login as a guest to [GoCD](www.gocd.org) server.
 
-This is merely a skeleton plugin that plugin developers can fork to get quickly started with writing authorization plugins for GoCD.
+## Requirements
+* GoCD server version v17.5.0 or above
 
-All the documentation is hosted [here](https://plugin-api.gocd.io/current/authorization/)
+## Installation
+Copy the file build/libs/gocd-guest-login-plugin-VERSION.jar to the GoCD server under ${GO_SERVER_DIR}/plugins/external and restart the server. The GO_SERVER_DIR is usually /var/lib/go-server on Linux and C:\Program Files\Go Server on Windows.
 
-## Getting started
+### Configuration
+#### Create Authorization Configuration
 
-* Edit the file `build.gradle` to change the plugin id, description and some other metadata
-* Edit the file `settings.gradle` to change the name of this project
-* Add your icon to plugin by changing class `GetPluginIconExecutor.java` (Note: place your icon under `resources` folder)
-* Edit the file `GetCapabilitiesExecutor.java` to provide your plugin capabilities
-* Edit the `GetAuthConfigMetadataExecutor.java`, `Configuration.java` and `auth-config.template.html` files to add any plugin auth configuration fields that should be shown in the view
-* Edit the file `VerifyConnectionRequestExecutor.java` for perform any connection check on given auth config
-* Edit the `GetRoleConfigMetadataExecutor.java`, `RoleConfiguration.java` and `role-config.template.html` files to add any role configuration fields that should be shown in the view
-* Edit `UserAuthenticationExecutor.java` to perform authentication and authorization of user
-* If your plugins supports search, then edit `SearchUserExecutor.java`
+1. Login to GoCD Server as admin and navigate to _**Admin > Security > Authorization Configuration**_.  
+2.Click on Add to create new authorization configuration:  
+    1. Specify id for auth config
+    2. Select `Guest Authorization Plugin` for _**Plugin Id**_ 
+    3. Specify `Go Server Url`
+    4. Specify `Username` of the guest user.
+    5. Specify `Display name` of the guest user.
+    6. Specify `Email address` of the guest user.
+!["Guest Login Plugin Auth Config"][1]
+
+#### Troubleshooting
+Enabling debug level logging can help you troubleshoot an issue with the `Guest Authorization Plugin`. To enable debug level logs, edit the /etc/default/go-server (for Linux) to add
+```
+export GO_SERVER_SYSTEM_PROPERTIES="$GO_SERVER_SYSTEM_PROPERTIES -Dplugin.cd.go.contrib.authorization.guest.log.level=debug"
+```
+
+If you're running the server via ./server.sh script —
+```
+$ GO_SERVER_SYSTEM_PROPERTIES="-Dplugin.cd.go.contrib.authorization.guest.log.level=debug" ./server.sh
+```
 
 ## Building the code base
-
 To build the jar, run `./gradlew clean test assemble`
 
 ## License
@@ -38,14 +52,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-## About the license and releasing your plugin under a different license
-
-The skeleton code in this repository is licensed under the Apache 2.0 license. The license itself specifies the terms
-under which derivative works may be distributed (the license also defines derivative works). The Apache 2.0 license is a
-permissive open source license that has minimal requirements for downstream licensors/licensees to comply with.
-
-This does not prevent your plugin from being licensed under a different license as long as you comply with the relevant
-clauses of the Apache 2.0 license (especially section 4). Typically, you clone this repository and keep the existing
-copyright notices. You are free to add your own license and copyright notice to any modifications.
-
-This is not legal advice. Please contact your lawyers if needed.
+[1]: images/auth-config.png     "Guest Login Plugin Auth Config"
