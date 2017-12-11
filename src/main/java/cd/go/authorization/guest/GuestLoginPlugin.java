@@ -13,8 +13,8 @@ import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import static cd.go.authorization.guest.Constants.PLUGIN_IDENTIFIER;
 
 @Extension
-public class GoCDGuestLoginPlugin implements GoPlugin {
-    public static final Logger LOG = Logger.getLoggerFor(GoCDGuestLoginPlugin.class);
+public class GuestLoginPlugin implements GoPlugin {
+    public static final Logger LOG = Logger.getLoggerFor(GuestLoginPlugin.class);
 
     private GoApplicationAccessor accessor;
 

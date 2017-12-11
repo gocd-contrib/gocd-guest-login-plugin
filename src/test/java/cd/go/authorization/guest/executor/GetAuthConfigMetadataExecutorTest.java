@@ -29,28 +29,28 @@ public class GetAuthConfigMetadataExecutorTest {
         assertThat(response.responseCode(), is(200));
         String expectedJSON = "[\n" +
                 "  {\n" +
-                "    \"key\": \"SETTINGS_SERVER_URL_KEY\",\n" +
+                "    \"key\": \"go_server_url\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"key\": \"GUEST_USER_USERNAME\",\n" +
+                "    \"key\": \"guest_username\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"key\": \"GUEST_USER_DISPLAY_NAME\",\n" +
+                "    \"key\": \"guest_user_display_name\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"key\": \"GUEST_USER_EMAIL\",\n" +
+                "    \"key\": \"guest_user_email_address\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
