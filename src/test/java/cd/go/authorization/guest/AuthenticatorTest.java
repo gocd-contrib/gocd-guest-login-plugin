@@ -29,7 +29,7 @@ public class AuthenticatorTest {
         authConfigs.add(authConfig);
 
         AuthenticationResponse expected = new AuthenticationResponse(new User(username, displayName, emailId), authConfig);
-        AuthenticationResponse response = new Authenticator().authenticate(null, authConfigs);
+        AuthenticationResponse response = new Authenticator().authenticate(authConfigs);
 
         assertThat(response, is(expected));
     }

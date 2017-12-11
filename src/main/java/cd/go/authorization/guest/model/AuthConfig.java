@@ -19,14 +19,6 @@ public class AuthConfig {
     @SerializedName("configuration")
     private Configuration configuration;
 
-    public String getId() {
-        return id;
-    }
-
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
     public static List<AuthConfig> fromJSONList(String requestBody) {
         JsonObject jsonObject = GSON.fromJson(requestBody, JsonObject.class);
         Type type = new TypeToken<List<AuthConfig>>() {
@@ -38,8 +30,16 @@ public class AuthConfig {
         return GSON.fromJson(json, AuthConfig.class);
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
     }
 
     public void setConfiguration(Configuration configuration) {

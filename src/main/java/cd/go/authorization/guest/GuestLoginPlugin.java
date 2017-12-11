@@ -44,7 +44,7 @@ public class GuestLoginPlugin implements GoPlugin {
                 case REQUEST_ACCESS_TOKEN:
                     return new GetAccessTokenExecutor(request).execute();
                 case REQUEST_AUTHENTICATE_USER:
-                    return new UserAuthenticationExecutor(request, new Authenticator(), new Authorizer()).execute();
+                    return new UserAuthenticationExecutor(request, new Authenticator()).execute();
                 default:
                     throw new UnhandledRequestTypeException(request.requestName());
             }

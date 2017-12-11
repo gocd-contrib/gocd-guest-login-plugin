@@ -32,10 +32,6 @@ public class Configuration {
     @ProfileField(key = SETTINGS_USER_EMAIL_KEY, required = true, secure = false)
     private String emailAddress;
 
-    public static Configuration fromJSON(String json) {
-        return GSON.fromJson(json, Configuration.class);
-    }
-
     public Configuration() {
     }
 
@@ -44,6 +40,15 @@ public class Configuration {
         this.username = username;
         this.displayName = displayName;
         this.emailAddress = emailAddress;
+    }
+
+    public static Configuration fromJSON(String json) {
+        return GSON.fromJson(json, Configuration.class);
+    }
+
+    public static List<Map<String, String>> validate(Map<String, String> properties) {
+        final List<Map<String, String>> validationResult = MetadataHelper.validate(Configuration.class, properties);
+        return validationResult;
     }
 
     public String getUsername() {
@@ -60,10 +65,5 @@ public class Configuration {
 
     public String getServerUrl() {
         return serverUrl;
-    }
-
-    public static List<Map<String, String>> validate(Map<String, String> properties) {
-        final List<Map<String, String>> validationResult = MetadataHelper.validate(Configuration.class, properties);
-        return validationResult;
     }
 }

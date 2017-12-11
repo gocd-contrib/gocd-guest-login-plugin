@@ -1,7 +1,6 @@
 package cd.go.authorization.guest.executor;
 
 import cd.go.authorization.guest.Authenticator;
-import cd.go.authorization.guest.Authorizer;
 import cd.go.authorization.guest.model.AuthConfig;
 import cd.go.authorization.guest.model.AuthenticationResponse;
 import com.google.gson.Gson;
@@ -20,24 +19,22 @@ public class UserAuthenticationExecutor implements RequestExecutor {
     private static final Gson GSON = new Gson();
     private final GoPluginApiRequest request;
     private final Authenticator authenticator;
-    private final Authorizer authorizer;
 
-    public UserAuthenticationExecutor(GoPluginApiRequest request, Authenticator authenticator, Authorizer authorizer) {
+    public UserAuthenticationExecutor(GoPluginApiRequest request, Authenticator authenticator) {
         this.request = request;
         this.authenticator = authenticator;
-        this.authorizer = authorizer;
     }
 
     @Override
     public GoPluginApiResponse execute() throws Exception {
         final List<AuthConfig> authConfigs = AuthConfig.fromJSONList(request.requestBody());
 
-        AuthenticationResponse authenticationResponse = authenticator.authenticate(null, authConfigs);
+        AuthenticationResponse authenticationResponse = authenticator.authenticate(authConfigs);
 
         Map<String, Object> userMap = new HashMap<>();
         if (authenticationResponse != null) {
             userMap.put("user", authenticationResponse.getUser());
-            userMap.put("roles", authorizer.authorize(authenticationResponse.getUser(), authenticationResponse.getConfigUsedForAuthentication(), new ArrayList<>()));
+            userMap.put("roles", new ArrayList<>());
         }
 
         DefaultGoPluginApiResponse response = new DefaultGoPluginApiResponse(SUCCESS_RESPONSE_CODE, GSON.toJson(userMap));

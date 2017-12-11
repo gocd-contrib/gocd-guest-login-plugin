@@ -1,7 +1,6 @@
 package cd.go.authorization.guest.executor;
 
 import cd.go.authorization.guest.Authenticator;
-import cd.go.authorization.guest.Authorizer;
 import com.google.gson.Gson;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
@@ -45,7 +44,7 @@ public class UserAuthenticationExecutorTest {
 
         when(request.requestBody()).thenReturn(new Gson().toJson(requestBody));
 
-        GoPluginApiResponse actualResponse = new UserAuthenticationExecutor(request, new Authenticator(), new Authorizer()).execute();
+        GoPluginApiResponse actualResponse = new UserAuthenticationExecutor(request, new Authenticator()).execute();
         DefaultGoPluginApiResponse expectedResponse = new DefaultGoPluginApiResponse(200, "{\"roles\":[],\"user\":{\"username\":\"username\",\"display_name\":\"display-name\",\"email\":\"email-id\"}}");
 
         assertThat(actualResponse.responseBody(), is(expectedResponse.responseBody()));
