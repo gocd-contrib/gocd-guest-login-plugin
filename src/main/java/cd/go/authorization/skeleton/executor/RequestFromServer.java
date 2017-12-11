@@ -10,6 +10,9 @@ public enum RequestFromServer {
     REQUEST_VALIDATE_AUTH_CONFIG(String.join(".", Constants.REQUEST_PREFIX, Constants._AUTH_CONFIG_METADATA, "validate")),
     REQUEST_VERIFY_CONNECTION(String.join(".", Constants.REQUEST_PREFIX, Constants._AUTH_CONFIG_METADATA, "verify-connection")),
 
+    REQUEST_AUTHORIZATION_SERVER_REDIRECT_URL(Constants.REQUEST_PREFIX + ".authorization-server-url"),
+    REQUEST_ACCESS_TOKEN(Constants.REQUEST_PREFIX + ".fetch-access-token"),
+
     REQUEST_GET_ROLE_CONFIG_METADATA(String.join(".", Constants.REQUEST_PREFIX, Constants._ROLE_CONFIG_METADATA, "get-metadata")),
     REQUEST_ROLE_CONFIG_VIEW(String.join(".", Constants.REQUEST_PREFIX, Constants._ROLE_CONFIG_METADATA, "get-view")),
     REQUEST_VALIDATE_ROLE_CONFIG(String.join(".", Constants.REQUEST_PREFIX, Constants._ROLE_CONFIG_METADATA, "validate")),

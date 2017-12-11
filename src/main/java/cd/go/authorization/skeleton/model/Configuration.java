@@ -13,6 +13,11 @@ import static cd.go.authorization.skeleton.utils.Util.GSON;
 
 public class Configuration {
     @Expose
+    @SerializedName(SETTINGS_SERVER_URL_KEY)
+    @ProfileField(key = SETTINGS_SERVER_URL_KEY, required = true, secure = false)
+    private String serverUrl;
+
+    @Expose
     @SerializedName(SETTINGS_USERNAME_KEY)
     @ProfileField(key = SETTINGS_USERNAME_KEY, required = true, secure = false)
     private String username;
@@ -29,6 +34,22 @@ public class Configuration {
 
     public static Configuration fromJSON(String json) {
         return GSON.fromJson(json, Configuration.class);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public String getServerUrl() {
+        return serverUrl;
     }
 
     public static List<Map<String, String>> validate(Map<String, String> properties) {

@@ -29,21 +29,21 @@ public class GetAuthConfigMetadataExecutorTest {
         assertThat(response.responseCode(), is(200));
         String expectedJSON = "[\n" +
                 "  {\n" +
-                "    \"key\": \"GUEST_USER_USERNAME\",\n" +
+                "    \"key\": \"Username\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"key\": \"GUEST_USER_DISPLAY_NAME\",\n" +
+                "    \"key\": \"DisplayName\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"key\": \"GUEST_USER_EMAIL\",\n" +
+                "    \"key\": \"EmailAddress\",\n" +
                 "    \"metadata\": {\n" +
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
