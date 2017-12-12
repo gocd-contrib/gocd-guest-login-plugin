@@ -33,7 +33,6 @@ public class UserAuthenticationExecutorTest {
         configuration.put(SETTINGS_SERVER_URL_KEY, "server-url");
         configuration.put(SETTINGS_USERNAME_KEY, "username");
         configuration.put(SETTINGS_USER_DISPLAY_NAME_KEY, "display-name");
-        configuration.put(SETTINGS_USER_EMAIL_KEY, "email-id");
 
         HashMap<String, Object> authConfig = new HashMap<>();
         authConfig.put("id", "dummy_id");
@@ -45,7 +44,7 @@ public class UserAuthenticationExecutorTest {
         when(request.requestBody()).thenReturn(new Gson().toJson(requestBody));
 
         GoPluginApiResponse actualResponse = new UserAuthenticationExecutor(request, new Authenticator()).execute();
-        DefaultGoPluginApiResponse expectedResponse = new DefaultGoPluginApiResponse(200, "{\"roles\":[],\"user\":{\"username\":\"username\",\"display_name\":\"display-name\",\"email\":\"email-id\"}}");
+        DefaultGoPluginApiResponse expectedResponse = new DefaultGoPluginApiResponse(200, "{\"roles\":[],\"user\":{\"username\":\"username\",\"display_name\":\"display-name\"}}");
 
         assertThat(actualResponse.responseBody(), is(expectedResponse.responseBody()));
         assertThat(actualResponse.responseCode(), is(expectedResponse.responseCode()));

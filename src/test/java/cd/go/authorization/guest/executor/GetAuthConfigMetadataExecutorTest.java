@@ -48,13 +48,6 @@ public class GetAuthConfigMetadataExecutorTest {
                 "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"key\": \"guest_user_email_address\",\n" +
-                "    \"metadata\": {\n" +
-                "      \"required\": true,\n" +
-                "      \"secure\": false\n" +
-                "    }\n" +
                 "  }\n" +
                 "]";
 

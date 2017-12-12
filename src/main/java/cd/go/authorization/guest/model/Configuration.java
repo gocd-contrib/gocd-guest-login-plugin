@@ -27,19 +27,13 @@ public class Configuration {
     @ProfileField(key = SETTINGS_USER_DISPLAY_NAME_KEY, required = true, secure = false)
     private String displayName;
 
-    @Expose
-    @SerializedName(SETTINGS_USER_EMAIL_KEY)
-    @ProfileField(key = SETTINGS_USER_EMAIL_KEY, required = true, secure = false)
-    private String emailAddress;
-
     public Configuration() {
     }
 
-    public Configuration(String serverUrl, String username, String displayName, String emailAddress) {
+    public Configuration(String serverUrl, String username, String displayName) {
         this.serverUrl = serverUrl;
         this.username = username;
         this.displayName = displayName;
-        this.emailAddress = emailAddress;
     }
 
     public static Configuration fromJSON(String json) {
@@ -58,11 +52,7 @@ public class Configuration {
     public String getDisplayName() {
         return displayName;
     }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
+    
     public String getServerUrl() {
         return serverUrl;
     }

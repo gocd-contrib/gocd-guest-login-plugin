@@ -31,7 +31,6 @@ public class GetAuthorizationServerRedirectUrlExecutorTest {
         configuration.put(SETTINGS_SERVER_URL_KEY, "server-url");
         configuration.put(SETTINGS_USERNAME_KEY, "username");
         configuration.put(SETTINGS_USER_DISPLAY_NAME_KEY, "display-name");
-        configuration.put(SETTINGS_USER_EMAIL_KEY, "email-id");
 
         HashMap<String, Object> authConfig = new HashMap<>();
         authConfig.put("id", "dummy_id");

@@ -31,7 +31,6 @@ public class AuthConfigValidateRequestExecutorTest {
         keyValuePairs.put(SETTINGS_SERVER_URL_KEY, "server-url");
         keyValuePairs.put(SETTINGS_USERNAME_KEY, "username");
         keyValuePairs.put(SETTINGS_USER_DISPLAY_NAME_KEY, "display-name");
-        keyValuePairs.put(SETTINGS_USER_EMAIL_KEY, "email-id");
 
         when(request.requestBody()).thenReturn(new Gson().toJson(keyValuePairs));
 
@@ -55,7 +54,6 @@ public class AuthConfigValidateRequestExecutorTest {
         HashMap<String, String> keyValuePairs = new HashMap<>();
         keyValuePairs.put(SETTINGS_USERNAME_KEY, "username");
         keyValuePairs.put(SETTINGS_USER_DISPLAY_NAME_KEY, "display-name");
-        keyValuePairs.put(SETTINGS_USER_EMAIL_KEY, "email-id");
 
         when(request.requestBody()).thenReturn(new Gson().toJson(keyValuePairs));
 

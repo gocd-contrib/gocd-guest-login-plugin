@@ -18,17 +18,16 @@ public class AuthenticatorTest {
         String serverUrl = "server-url";
         String username = "Bob";
         String displayName = "Some Cool Bob!";
-        String emailId = "bob@bob.com";
 
         ArrayList<AuthConfig> authConfigs = new ArrayList<>();
         AuthConfig authConfig = new AuthConfig();
 
         authConfig.setId("auth-config-1");
-        authConfig.setConfiguration(new Configuration(serverUrl, username, displayName, emailId));
+        authConfig.setConfiguration(new Configuration(serverUrl, username, displayName));
 
         authConfigs.add(authConfig);
 
-        AuthenticationResponse expected = new AuthenticationResponse(new User(username, displayName, emailId), authConfig);
+        AuthenticationResponse expected = new AuthenticationResponse(new User(username, displayName), authConfig);
         AuthenticationResponse response = new Authenticator().authenticate(authConfigs);
 
         assertThat(response, is(expected));

@@ -14,14 +14,9 @@ public class User {
     @SerializedName("display_name")
     private String displayName;
 
-    @Expose
-    @SerializedName("email")
-    private String emailId;
-
-    public User(String username, String displayName, String emailId) {
+    public User(String username, String displayName) {
         this.username = username;
         this.displayName = displayName;
-        this.emailId = emailId == null ? null : emailId.toLowerCase().trim();
 
         if (Util.isBlank(this.username)) {
             throw new InvalidUsernameException("Username can not be blank.");
@@ -36,10 +31,6 @@ public class User {
         return displayName != null && displayName.length() > 0 ? displayName : username;
     }
 
-    public String getEmailId() {
-        return emailId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,7 +39,6 @@ public class User {
         User user = (User) o;
 
         if (displayName != null ? !displayName.equals(user.displayName) : user.displayName != null) return false;
-        if (emailId != null ? !emailId.equals(user.emailId) : user.emailId != null) return false;
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
 
         return true;
@@ -58,7 +48,6 @@ public class User {
     public int hashCode() {
         int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (displayName != null ? displayName.hashCode() : 0);
-        result = 31 * result + (emailId != null ? emailId.hashCode() : 0);
         return result;
     }
 
@@ -66,7 +55,6 @@ public class User {
     public String toString() {
         return new StringBuilder("User@{username=").append(username)
                 .append(", displayName=").append(displayName)
-                .append(", emailId=").append(emailId)
                 .append("}").toString();
     }
 }

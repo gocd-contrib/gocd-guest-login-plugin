@@ -11,7 +11,7 @@ public class Authenticator {
     public AuthenticationResponse authenticate(List<AuthConfig> authConfigs) {
         AuthConfig authConfig = authConfigs.get(0);
         Configuration configuration = authConfig.getConfiguration();
-        User user = new User(configuration.getUsername(), configuration.getDisplayName(), configuration.getEmailAddress());
+        User user = new User(configuration.getUsername(), configuration.getDisplayName());
         return new AuthenticationResponse(user, authConfig);
     }
 

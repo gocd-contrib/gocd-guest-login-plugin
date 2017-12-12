@@ -17,7 +17,5 @@ public interface Constants {
     String SETTINGS_SERVER_URL_KEY = "go_server_url";
     String SETTINGS_USERNAME_KEY = "guest_username";
     String SETTINGS_USER_DISPLAY_NAME_KEY = "guest_user_display_name";
-    String SETTINGS_USER_EMAIL_KEY = "guest_user_email_address";
-
 
 }
