@@ -18,7 +18,6 @@ Copy the file `build/libs/gocd-guest-login-plugin-VERSION.jar` to the GoCD serve
     3. Specify `Go Server Url`
     4. Specify `Username` of the guest user.
     5. Specify `Display name` of the guest user.
-    6. Specify `Email address` of the guest user.
 
     !["Guest Login Plugin Auth Config"][1]
 
