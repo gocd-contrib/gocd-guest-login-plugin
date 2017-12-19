@@ -15,7 +15,7 @@ Copy the file `build/libs/gocd-guest-login-plugin-VERSION.jar` to the GoCD serve
 2. Click on Add to create new authorization configuration:  
     1. Specify `id` for auth config
     2. Select `Guest Authorization Plugin` for _**Plugin Id**_ 
-    3. Specify `Go Server Url`
+    3. Specify `Go Server Url`. Eg. `https://<GO_SERVER_URL>/go`
     4. Specify `Username` of the guest user.
     5. Specify `Display name` of the guest user.
 

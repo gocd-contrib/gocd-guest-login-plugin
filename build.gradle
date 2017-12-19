@@ -27,10 +27,10 @@ project.ext.pluginDesc = [
         id         : 'cd.go.contrib.authorization.guest',
         version    : project.version,
         goCdVersion: '17.5.0',
-        name       : 'Guest Authorization Plugin',
-        description: 'Guest Authorization Plugin for GoCD',
+        name       : 'Guest Login Plugin',
+        description: 'Guest Login Plugin for GoCD',
         vendorName : 'GoCD Contributors',
-        vendorUrl  : 'https://github.com/gocd-contrib/kubernetes-elastic-agent'
+        vendorUrl  : 'https://github.com/gocd-contrib/guest-login-plugin'
 ]
 
 // In this section you declare where to find the dependencies of your project
@@ -75,9 +75,9 @@ jar {
     from(configurations.compile) {
         into "lib/"
     }
-    from(sourceSets.main.java) {
-        into "/"
-    }
+//    from(sourceSets.main.java) {
+//        into "/"
+//    }
 }
 
 tasks.withType(Jar) { jarTask ->
