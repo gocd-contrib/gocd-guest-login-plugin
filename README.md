@@ -14,7 +14,7 @@ Copy the file `build/libs/gocd-guest-login-plugin-VERSION.jar` to the GoCD serve
 1. Login to GoCD Server as admin and navigate to **_Admin_** _>_ **_Security_** _>_ **_Authorization Configuration_**
 2. Click on Add to create new authorization configuration:  
     1. Specify `id` for auth config
-    2. Select `Guest Authorization Plugin` for _**Plugin Id**_ 
+    2. Select `Guest Login Plugin` for _**Plugin Id**_ 
     3. Specify `Go Server Url`. Eg. `https://<GO_SERVER_URL>/go`
     4. Specify `Username` of the guest user.
     5. Specify `Display name` of the guest user.
@@ -22,7 +22,7 @@ Copy the file `build/libs/gocd-guest-login-plugin-VERSION.jar` to the GoCD serve
     !["Guest Login Plugin Auth Config"][1]
 
 #### Troubleshooting
-Enabling debug level logging can help you troubleshoot an issue with the `Guest Authorization Plugin`. To enable debug level logs, edit the `/etc/default/go-server` (for Linux) to add
+Enabling debug level logging can help you troubleshoot an issue with the `Guest Login Plugin`. To enable debug level logs, edit the `/etc/default/go-server` (for Linux) to add
 ```
 export GO_SERVER_SYSTEM_PROPERTIES="$GO_SERVER_SYSTEM_PROPERTIES -Dplugin.cd.go.contrib.authorization.guest.log.level=debug"
 ```
