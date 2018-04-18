@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
+plugins {
+  id 'co.riiid.gradle' version '0.4.2'
+}
+
 apply plugin: 'java'
 apply from: 'plugin-common.gradle'
 
-project.ext.pluginVersion = '1.0.0'
+project.ext.pluginVersion = '1.0.1'
 project.ext.fullVersion = project.distVersion ? "${project.pluginVersion}-${project.distVersion}" : project.pluginVersion
 
 group = 'cd.go.contrib'
@@ -102,3 +106,19 @@ tasks.withType(Jar) { jarTask ->
         )
     }
 }
+
+github {
+  owner = System.getenv('GITHUB_USER') ?: 'bob'
+  repo = 'guest-login-plugin'
+  token = System.getenv('GITHUB_TOKEN') ?: 'bad-token'
+  tagName = pluginVersion
+  name = pluginVersion
+  targetCommitish = project.gitRevision
+  body = """
+      # Version ${fullVersion}
+    """.stripIndent().trim()
+
+  assets = jar.outputs.files.files
+}
+
+githubRelease.dependsOn assemble

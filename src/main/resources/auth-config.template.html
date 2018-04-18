@@ -14,20 +14,37 @@
   ~ limitations under the License.
   -->
 
-<div class="form_item_block">
-    <label>Go Server Url:</label>
-    <input type="text" ng-model="go_server_url" ng-required="true" tabindex="1"/>
-    <span class="form_error" ng-show="GOINPUTNAME[go_server_url].$error.server">{{ GOINPUTNAME[go_server_url].$error.server }}</span>
-</div>
+<div data-plugin-style-id="guest-login-plugin">
+    <style>
+        [data-plugin-style-id="guest-login-plugin"] .form-help-content {
+            color:         #666;
+            font-style:    italic;
+            clear:         both;
+            font-size:     0.82rem;
+            margin-top:    -15px;
+            margin-bottom: 10px;
+        }
+    </style>
 
-<div class="form_item_block">
-    <label>Username:</label>
-    <input type="text" ng-model="guest_username" ng-required="true" tabindex="1"/>
-    <span class="form_error" ng-show="GOINPUTNAME[guest_username].$error.server">{{ GOINPUTNAME[guest_username].$error.server }}</span>
-</div>
+    <div class="form_item_block">
+        <label>Go Server Url: <small></small></label>
+        <input type="text" ng-model="go_server_url" ng-required="true" tabindex="1"/>
+        <span class="form_error" ng-show="GOINPUTNAME[go_server_url].$error.server">{{ GOINPUTNAME[go_server_url].$error.server }}</span>
+        <label class="form-help-content">Provide the url to your go server. Example: <strong>https://build.example.com:8154/go</strong></label>
+    </div>
 
-<div class="form_item_block">
-    <label>Display name:</label>
-    <input type="text" ng-model="guest_user_display_name" ng-required="true" tabindex="2"/>
-    <span class="form_error" ng-show="GOINPUTNAME[guest_user_display_name].$error.server">{{ GOINPUTNAME[guest_user_display_name].$error.server }}</span>
+    <div class="form_item_block">
+        <label>Username:</label>
+        <input type="text" ng-model="guest_username" ng-required="true" tabindex="1"/>
+        <span class="form_error" ng-show="GOINPUTNAME[guest_username].$error.server">{{ GOINPUTNAME[guest_username].$error.server }}</span>
+        <label class="form-help-content">The (shared) login name for the guest user.</label>
+    </div>
+
+    <div class="form_item_block">
+        <label>Display name:</label>
+        <input type="text" ng-model="guest_user_display_name" ng-required="true" tabindex="2"/>
+        <span class="form_error" ng-show="GOINPUTNAME[guest_user_display_name].$error.server">{{ GOINPUTNAME[guest_user_display_name].$error.server }}</span>
+        <label class="form-help-content">The display name fot the guest user.</label>
+    </div>
+
 </div>
