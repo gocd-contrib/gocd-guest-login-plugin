@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package cd.go.authorization.guest.executor;
 
 import cd.go.authorization.guest.Authenticator;
-import cd.go.authorization.guest.model.AuthConfig;
+import cd.go.authorization.guest.model.AuthenticationRequest;
 import cd.go.authorization.guest.model.AuthenticationResponse;
 import com.google.gson.Gson;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
@@ -26,10 +26,10 @@ import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static com.thoughtworks.go.plugin.api.response.DefaultGoApiResponse.SUCCESS_RESPONSE_CODE;
+import static cd.go.authorization.guest.GuestLoginPlugin.TEMPORARY_ACCESS_TOKEN;
+import static cd.go.authorization.guest.executor.GetAccessTokenExecutor.ACCESS_TOKEN_FOR_VIEW_USER;
 
 public class UserAuthenticationExecutor implements RequestExecutor {
     private static final Gson GSON = new Gson();
@@ -42,18 +42,20 @@ public class UserAuthenticationExecutor implements RequestExecutor {
     }
 
     @Override
-    public GoPluginApiResponse execute() throws Exception {
-        final List<AuthConfig> authConfigs = AuthConfig.fromJSONList(request.requestBody());
+    public GoPluginApiResponse execute() {
+        final AuthenticationRequest authenticationRequest = AuthenticationRequest.fromJson(request.requestBody());
 
-        AuthenticationResponse authenticationResponse = authenticator.authenticate(authConfigs);
-
-        Map<String, Object> userMap = new HashMap<>();
-        if (authenticationResponse != null) {
-            userMap.put("user", authenticationResponse.getUser());
-            userMap.put("roles", new ArrayList<>());
+        if (authenticationRequest.getCredentials().get(ACCESS_TOKEN_FOR_VIEW_USER).equals(TEMPORARY_ACCESS_TOKEN)) {
+            AuthenticationResponse authenticationResponse = authenticator.authenticate(authenticationRequest.getAuthConfigs());
+            Map<String, Object> userMap = new HashMap<>();
+            if (authenticationResponse != null) {
+                userMap.put("user", authenticationResponse.getUser());
+                userMap.put("roles", new ArrayList<>());
+            }
+            return DefaultGoPluginApiResponse.success(GSON.toJson(userMap));
         }
 
-        DefaultGoPluginApiResponse response = new DefaultGoPluginApiResponse(SUCCESS_RESPONSE_CODE, GSON.toJson(userMap));
-        return response;
+        return DefaultGoPluginApiResponse.error("Invalid access token specified.");
     }
+
 }
