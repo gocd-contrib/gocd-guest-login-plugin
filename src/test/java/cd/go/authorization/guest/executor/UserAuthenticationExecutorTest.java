@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,12 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 import static cd.go.authorization.guest.Constants.*;
+import static cd.go.authorization.guest.GuestLoginPlugin.TEMPORARY_ACCESS_TOKEN;
+import static cd.go.authorization.guest.executor.GetAccessTokenExecutor.ACCESS_TOKEN_FOR_VIEW_USER;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
@@ -56,6 +59,7 @@ public class UserAuthenticationExecutorTest {
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("auth_configs", Arrays.asList(authConfig));
+        requestBody.put("credentials", Collections.singletonMap(ACCESS_TOKEN_FOR_VIEW_USER, TEMPORARY_ACCESS_TOKEN));
 
         when(request.requestBody()).thenReturn(new Gson().toJson(requestBody));
 

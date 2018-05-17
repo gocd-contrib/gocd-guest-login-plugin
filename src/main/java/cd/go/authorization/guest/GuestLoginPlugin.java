@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,14 @@ import com.thoughtworks.go.plugin.api.logging.Logger;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
+import java.util.UUID;
+
 import static cd.go.authorization.guest.Constants.PLUGIN_IDENTIFIER;
 
 @Extension
 public class GuestLoginPlugin implements GoPlugin {
     public static final Logger LOG = Logger.getLoggerFor(GuestLoginPlugin.class);
+    public static final String TEMPORARY_ACCESS_TOKEN = UUID.randomUUID().toString();
 
     private GoApplicationAccessor accessor;
 
@@ -40,7 +43,7 @@ public class GuestLoginPlugin implements GoPlugin {
     }
 
     @Override
-    public GoPluginApiResponse handle(GoPluginApiRequest request) throws UnhandledRequestTypeException {
+    public GoPluginApiResponse handle(GoPluginApiRequest request) {
         try {
             switch (RequestFromServer.fromString(request.requestName())) {
                 case REQUEST_GET_PLUGIN_ICON:

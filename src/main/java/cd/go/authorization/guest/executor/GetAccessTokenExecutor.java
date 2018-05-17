@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,15 @@
 
 package cd.go.authorization.guest.executor;
 
+import com.google.gson.JsonObject;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
+import static cd.go.authorization.guest.GuestLoginPlugin.TEMPORARY_ACCESS_TOKEN;
+
 public class GetAccessTokenExecutor {
+    public static final String ACCESS_TOKEN_FOR_VIEW_USER = "access_token_for_view_user";
     private GoPluginApiRequest request;
 
     public GetAccessTokenExecutor(GoPluginApiRequest request) {
@@ -28,6 +32,8 @@ public class GetAccessTokenExecutor {
     }
 
     public GoPluginApiResponse execute() {
-        return DefaultGoPluginApiResponse.success("{}");
+        final JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(ACCESS_TOKEN_FOR_VIEW_USER, TEMPORARY_ACCESS_TOKEN);
+        return DefaultGoPluginApiResponse.success(jsonObject.toString());
     }
 }
