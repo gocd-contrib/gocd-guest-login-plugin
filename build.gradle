@@ -15,7 +15,7 @@
  */
 
 plugins {
-  id 'co.riiid.gradle' version '0.4.2'
+    id 'co.riiid.gradle' version '0.4.2'
 }
 
 apply plugin: 'java'
@@ -108,17 +108,17 @@ tasks.withType(Jar) { jarTask ->
 }
 
 github {
-  owner = System.getenv('GITHUB_USER') ?: 'bob'
-  repo = 'guest-login-plugin'
-  token = System.getenv('GITHUB_TOKEN') ?: 'bad-token'
-  tagName = pluginVersion
-  name = pluginVersion
-  targetCommitish = project.gitRevision
-  body = """
+    owner = System.getenv('GITHUB_USER') ?: 'bob'
+    repo = 'guest-login-plugin'
+    token = System.getenv('GITHUB_TOKEN') ?: 'bad-token'
+    tagName = pluginVersion
+    name = pluginVersion
+    targetCommitish = project.gitRevision
+    body = """
       # Version ${fullVersion}
     """.stripIndent().trim()
 
-  assets = jar.outputs.files.files
+    assets = jar.outputs.files.files
 }
 
 githubRelease.dependsOn assemble
