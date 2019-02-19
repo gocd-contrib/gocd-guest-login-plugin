@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ThoughtWorks, Inc.
+ * Copyright 2019 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,8 @@ public class GetCapabilitiesExecutorTest {
         String expectedJSON = "{\n" +
                 "    \"supported_auth_type\":\"web\",\n" +
                 "    \"can_search\":false,\n" +
-                "    \"can_authorize\":false\n" +
+                "    \"can_authorize\":false,\n" +
+                "    \"can_get_roles\":false\n" +
                 "}";
 
         JSONAssert.assertEquals(expectedJSON, response.responseBody(), true);

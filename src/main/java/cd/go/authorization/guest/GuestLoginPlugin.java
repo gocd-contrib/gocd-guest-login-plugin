@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 ThoughtWorks, Inc.
+ * Copyright 2019 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,6 +64,8 @@ public class GuestLoginPlugin implements GoPlugin {
                     return new GetAccessTokenExecutor(request).execute();
                 case REQUEST_AUTHENTICATE_USER:
                     return new UserAuthenticationExecutor(request, new Authenticator()).execute();
+                case REQUEST_IS_VALID_USER:
+                    return new IsValidUserRequestExecutor(request, new Authenticator()).execute();
                 default:
                     throw new UnhandledRequestTypeException(request.requestName());
             }

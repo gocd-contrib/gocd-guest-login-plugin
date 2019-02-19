@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ThoughtWorks, Inc.
+ * Copyright 2019 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,15 @@ public class Capabilities {
     @SerializedName("can_authorize")
     private final boolean canAuthorize;
 
-    public Capabilities(SupportedAuthType supportedAuthType, boolean canSearch, boolean canAuthorize) {
+    @Expose
+    @SerializedName("can_get_roles")
+    private final boolean canGetRoles;
+
+    public Capabilities(SupportedAuthType supportedAuthType, boolean canSearch, boolean canAuthorize, boolean canGetRoles) {
         this.supportedAuthType = supportedAuthType;
         this.canSearch = canSearch;
         this.canAuthorize = canAuthorize;
+        this.canGetRoles = canGetRoles;
     }
 
     public static Capabilities fromJSON(String json) {
@@ -54,6 +59,10 @@ public class Capabilities {
 
     public boolean canAuthorize() {
         return canSearch;
+    }
+
+    public boolean isCanGetRoles() {
+        return canGetRoles;
     }
 
     public String toJSON() {
