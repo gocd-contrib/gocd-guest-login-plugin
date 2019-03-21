@@ -34,7 +34,7 @@ public class GetPluginIconExecutorTest {
         GoPluginApiResponse response = new GetPluginIconExecutor().execute();
         HashMap<String, String> hashMap = new Gson().fromJson(response.responseBody(), HashMap.class);
         assertThat(hashMap.size(), is(2));
-        assertThat(hashMap.get("content_type"), is("image/png"));
-        assertThat(Util.readResourceBytes("/guest.png"), is(Base64.getDecoder().decode(hashMap.get("data"))));
+        assertThat(hashMap.get("content_type"), is("image/svg+xml"));
+        assertThat(Util.readResourceBytes("/guest.svg"), is(Base64.getDecoder().decode(hashMap.get("data"))));
     }
 }

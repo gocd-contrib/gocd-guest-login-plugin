@@ -38,10 +38,10 @@ public class GetPluginIconExecutor implements RequestExecutor {
     }
 
     private String getContentType() {
-        return "image/png";
+        return "image/svg+xml";
     }
 
     private String getIcon() {
-        return "/guest.png";
+        return "/guest.svg";
     }
 }
