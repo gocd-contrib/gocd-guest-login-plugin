@@ -13,37 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'co.riiid.gradle' version '0.4.2'
-}
 
 apply plugin: 'java'
-apply from: 'plugin-helpers.gradle'
+apply from: "https://raw.githubusercontent.com/gocd/gocd-plugin-gradle-task-helpers/master/helper.gradle?_=${(int) (new Date().toInstant().epochSecond / 60)}"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+gocdPlugin {
+    id = 'cd.go.contrib.authorization.guest'
+    pluginVersion = '2.0.0'
+    goCdVersion = '19.3.0'
+    name = 'Guest Login Plugin'
+    description = 'Guest Login Plugin for GoCD'
+    vendorName = 'ThoughtWorks, Inc.'
+    vendorUrl = 'https://github.com/gocd-contrib/guest-login-plugin'
 
-project.ext.pluginVersion = '2.0.0'
-project.ext.fullVersion = project.git.distVersion() ? "${project.pluginVersion}-${project.git.distVersion()}" : project.pluginVersion
+    githubRepo {
+        owner = System.getenv('GITHUB_USER') ?: 'bob'
+        repo = 'guest-login-plugin'
+        token = System.getenv('GITHUB_TOKEN') ?: 'bad-token'
+    }
 
-group = 'cd.go.contrib'
-version = project.fullVersion
+    pluginProject = project
 
-project.ext.pluginDesc = [
-        id         : 'cd.go.contrib.authorization.guest',
-        repo       : rootProject.name,
-        version    : project.version,
-        goCdVersion: '17.5.0',
-        name       : 'Guest Login Plugin',
-        description: 'Guest Login Plugin for GoCD',
-        vendorName : 'GoCD Contributors',
-        vendorUrl  : 'https://github.com/gocd-contrib/guest-login-plugin'
-]
+    prerelease = !"No".equalsIgnoreCase(System.getenv('PRERELEASE'))
+    assetsToRelease = [project.tasks.jar]
+}
+
+allprojects {
+    group = 'cd.go.contrib'
+    version = gocdPlugin.fullVersion(project)
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     jcenter()
-    mavenLocal()
 }
 
 sourceSets {
@@ -74,5 +76,3 @@ jar {
 //        into "/"
 //    }
 }
-
-apply from:'plugin-tasks.gradle'
