@@ -24,11 +24,11 @@ gocdPlugin {
     name = 'Guest Login Plugin'
     description = 'Guest Login Plugin for GoCD'
     vendorName = 'ThoughtWorks, Inc.'
-    vendorUrl = 'https://github.com/gocd-contrib/guest-login-plugin'
+    vendorUrl = 'https://github.com/gocd-contrib/gocd-guest-login-plugin'
 
     githubRepo {
         owner = System.getenv('GITHUB_USER') ?: 'bob'
-        repo = 'guest-login-plugin'
+        repo = 'gocd-guest-login-plugin'
         token = System.getenv('GITHUB_TOKEN') ?: 'bad-token'
     }
 
