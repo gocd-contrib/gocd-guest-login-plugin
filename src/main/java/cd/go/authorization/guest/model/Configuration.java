@@ -68,8 +68,12 @@ public class Configuration {
     public String getDisplayName() {
         return displayName;
     }
-    
+
     public String getServerUrl() {
+        if (serverUrl.endsWith("/")) {
+            int endIndex = serverUrl.length() - 1;
+            return serverUrl.substring(0, endIndex);
+        }
         return serverUrl;
     }
 }

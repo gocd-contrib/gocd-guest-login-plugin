@@ -41,6 +41,7 @@ public class GetAuthorizationServerRedirectUrlExecutorTest {
     public void setUp() throws Exception {
         initMocks(this);
     }
+
     @Test
     public void shouldReturnRedirectionUrlForARequest() throws Exception {
         HashMap<String, String> configuration = new HashMap<>();
@@ -64,6 +65,30 @@ public class GetAuthorizationServerRedirectUrlExecutorTest {
         assertThat(expectedResponse.responseCode(), is(actualResponse.responseCode()));
         assertThat(expectedResponse.responseBody(), is(actualResponse.responseBody()));
         assertThat(expectedResponse.responseHeaders(), is(actualResponse.responseHeaders()));
+    }
 
+    @Test
+    public void shouldReturnRedirectionUrlWhenServerUrlHasTrailingSlash() throws Exception {
+        HashMap<String, String> configuration = new HashMap<>();
+        configuration.put(SETTINGS_SERVER_URL_KEY, "server-url/");
+        configuration.put(SETTINGS_USERNAME_KEY, "username");
+        configuration.put(SETTINGS_USER_DISPLAY_NAME_KEY, "display-name");
+
+        HashMap<String, Object> authConfig = new HashMap<>();
+        authConfig.put("id", "dummy_id");
+        authConfig.put("configuration", configuration);
+
+        HashMap<String, Object> requestBody = new HashMap<>();
+        requestBody.put("auth_configs", Arrays.asList(authConfig));
+
+
+        when(request.requestBody()).thenReturn(new Gson().toJson(requestBody));
+
+        GoPluginApiResponse actualResponse = new GetAuthorizationServerRedirectUrlExecutor(request).execute();
+        GoPluginApiResponse expectedResponse = new DefaultGoPluginApiResponse(200, "{\"authorization_server_url\": \"server-url/plugin/cd.go.contrib.authorization.guest/authenticate\"}");
+
+        assertThat(expectedResponse.responseCode(), is(actualResponse.responseCode()));
+        assertThat(expectedResponse.responseBody(), is(actualResponse.responseBody()));
+        assertThat(expectedResponse.responseHeaders(), is(actualResponse.responseHeaders()));
     }
 }
