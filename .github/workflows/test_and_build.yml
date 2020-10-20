@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Gradle
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Test,Build and Experimental Release
+name: Test and Build
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     env:
-      GITHUB_USER: 'gocd-contrib'
+      GITHUB_USER:  "gocd-contrib"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
     - uses: actions/checkout@v2
