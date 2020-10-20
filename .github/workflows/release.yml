@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      PRERELEASE:
+      prerelease:
         description: 'The release should be an experimental release'
         default: 'NO'
         required: true
@@ -18,7 +18,7 @@ jobs:
     env:
       GITHUB_USER:  "gocd-contrib"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      PRERELEASE:   "${{ inputs.PRERELEASE }}"
+      PRERELEASE:   "${{ github.event.inputs.prerelease }}"
     steps:
     - uses: actions/checkout@v2
       with:
