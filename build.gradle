@@ -19,8 +19,8 @@ apply from: "https://raw.githubusercontent.com/gocd/gocd-plugin-gradle-task-help
 
 gocdPlugin {
     id = 'cd.go.contrib.authorization.guest'
-    pluginVersion = '2.0.0'
-    goCdVersion = '19.3.0'
+    pluginVersion = '2.1.0'
+    goCdVersion = '20.9.0'
     name = 'Guest Login Plugin'
     description = 'Guest Login Plugin for GoCD'
     vendorName = 'ThoughtWorks, Inc.'
