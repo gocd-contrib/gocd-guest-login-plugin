@@ -20,12 +20,12 @@ import cd.go.authorization.guest.model.AuthConfig;
 import cd.go.authorization.guest.model.AuthenticationResponse;
 import cd.go.authorization.guest.model.Configuration;
 import cd.go.authorization.guest.model.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class AuthenticatorTest {
 

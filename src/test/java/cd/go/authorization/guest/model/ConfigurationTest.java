@@ -16,10 +16,11 @@
 
 package cd.go.authorization.guest.model;
 
-import org.junit.Assert;
-import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class ConfigurationTest {
 
@@ -33,7 +34,7 @@ public class ConfigurationTest {
 
         String expected = "server-url";
         String actual = configuration.getServerUrl();
-        Assert.assertThat(actual, is(expected));
+        assertThat(actual, is(expected));
     }
 
     @Test
@@ -46,6 +47,6 @@ public class ConfigurationTest {
 
         String expected = "server-url";
         String actual = configuration.getServerUrl();
-        Assert.assertThat(actual, is(expected));
+        assertThat(actual, is(expected));
     }
 }
