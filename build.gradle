@@ -60,7 +60,7 @@ dependencies {
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.6.1'
     testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
     testImplementation group: 'cd.go.plugin', name: 'go-plugin-api', version: '22.1.0'
-    testImplementation group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
+    testImplementation group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.1'
 }
 
 test {
