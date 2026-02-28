@@ -69,7 +69,9 @@ ext {
 
 dependencies {
     compileOnly project.deps.gocdPluginApi
-    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation('com.google.code.gson:gson:2.13.2') {
+        exclude(module: 'error_prone_annotations') // Not needed at runtime
+    }
 
     testImplementation platform('org.junit:junit-bom:6.0.2')
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
