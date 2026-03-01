@@ -73,13 +73,13 @@ dependencies {
         exclude(module: 'error_prone_annotations') // Not needed at runtime
     }
 
-    testImplementation platform('org.junit:junit-bom:6.0.2')
+    testImplementation platform('org.junit:junit-bom:6.0.3')
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testImplementation 'org.junit.jupiter:junit-jupiter-params'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    testImplementation 'org.mockito:mockito-core:5.21.0'
+    testImplementation 'org.mockito:mockito-core:5.22.0'
     testImplementation 'org.hamcrest:hamcrest:3.0'
     testImplementation "cd.go.plugin:go-plugin-api:${project.versions.gocdPluginApi}"
     testImplementation 'org.skyscreamer:jsonassert:1.5.3'
