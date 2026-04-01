@@ -79,7 +79,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    testImplementation 'org.mockito:mockito-core:5.22.0'
+    testImplementation 'org.mockito:mockito-core:5.23.0'
     testImplementation 'org.hamcrest:hamcrest:3.0'
     testImplementation "cd.go.plugin:go-plugin-api:${project.versions.gocdPluginApi}"
     testImplementation 'org.skyscreamer:jsonassert:1.5.3'
